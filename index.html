@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>あしあと仲人©️</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 1. トップ画面 -->
+<section id="screen-top" class="screen">
+  <h1>あしあと仲人©️</h1>
+  <p class="subtitle">無料の出会い系が苦手な人のための、紹介制タグSNSのUI模型</p>
+
+  <h2>無料の出会い系が苦手な人へ</h2>
+  <p>顔だけで決めない。足あととタグで、ゆっくり人となりを見る紹介制SNSのUI模型です。</p>
+
+  <button onclick="showScreen('screen-auntie')">体験してみる</button>
+</section>
+
+<!-- 2. おばちゃん挨拶 -->
+<section id="screen-auntie" class="screen">
+  <h2>おばちゃんより</h2>
+  <p>最近のマッチング、ちょっと急ぎすぎやねん。まずはタグと気配から見ていきましょ。</p>
+  <button onclick="showScreen('screen-tags')">タグを見る</button>
+</section>
+
+<!-- 3. タグ選択 -->
+<section id="screen-tags" class="screen">
+  <h2>タグを選ぶ</h2>
+  <p class="hint">気になる肩書きタグを選ぶと、プロフィール側の共通タグが少し光ります。</p>
+  <div id="tagList"></div>
+  <button onclick="goToProfiles()">プロフィールを見る</button>
+</section>
+
+<!-- 4. プロフィールカード一覧 -->
+<section id="screen-profiles" class="screen">
+  <h2>プロフィール一覧</h2>
+  <p class="hint">顔写真ではなく、タグ・ひとこと・接続希望から人となりを見ます。</p>
+  <div id="profileList"></div>
+  <button onclick="showScreen('screen-tags')">タグに戻る</button>
+</section>
+
+<!-- 5. 足あと（気配） -->
+<section id="screen-footprint" class="screen">
+  <h2>見に来た気配</h2>
+  <p id="footprintText">このプロフィールを見た気配がつきました。</p>
+
+  <div id="footprintMiniCard" class="mini-card"></div>
+
+  <label class="toggle">
+    <input type="checkbox" id="footToggle">
+    足あと通知（ダミー）
+  </label>
+
+  <button onclick="showScreen('screen-knock')">ノックへ進む</button>
+</section>
+
+<!-- 6. ノック3択 -->
+<section id="screen-knock" class="screen">
+  <h2 id="knockTitle">どうします？</h2>
+  <p class="hint">いきなりDMではなく、まずは接続の温度を選びます。</p>
+  <button onclick="chooseKnock('knock')">ノックする</button>
+  <button onclick="chooseKnock('auntie')">おばちゃんに紹介文を頼む</button>
+  <button onclick="showScreen('screen-profiles')">今回は見送る</button>
+</section>
+
+<!-- 7. おばちゃん紹介文 -->
+<section id="screen-auntie-comment" class="screen">
+  <h2>おばちゃん紹介文</h2>
+  <p id="auntieText"></p>
+  <button onclick="showScreen('screen-gate')">本人確認ゲート説明へ</button>
+</section>
+
+<!-- 8. 本人確認ゲート説明 -->
+<section id="screen-gate" class="screen">
+  <h2>本人確認について</h2>
+  <div class="gate-card">
+    <p><strong>見るだけは軽く。接触は重く。</strong></p>
+    <p>将来的にメッセージや紹介希望に進む場合は、本人確認や年齢確認が必要になる可能性があります。</p>
+    <p>表ではハンドル名。裏では本人確認済み。</p>
+    <p>マイナンバーそのものは取得しません。</p>
+  </div>
+
+  <button onclick="showScreen('screen-top')">トップへ戻る</button>
+</section>
+
+<script src="app.js"></script>
+</body>
+</html>
