@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あしあと仲人©️ v0.3A</title>
+  <title>あしあと仲人©️ v0.3B</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -41,7 +41,15 @@
   <p id="communityDesc"></p>
   <h3>最近のスレッド</h3>
   <div id="communityThreads"></div>
+  <button onclick="openMemberList()">参加メンバーを見る</button>
   <button onclick="showScreen('screen-communities')">コミュニティ一覧へ戻る</button>
+</section>
+
+<section id="screen-members" class="screen">
+  <h2 id="memberListTitle">参加メンバー一覧</h2>
+  <p class="subtitle">自分のタグ肩書きと重なる人ほど上に表示されます。</p>
+  <div id="memberList"></div>
+  <button onclick="showScreen('screen-community-detail')">コミュニティ詳細へ戻る</button>
 </section>
 
 <section id="screen-thread-list" class="screen">
