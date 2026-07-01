@@ -5,6 +5,65 @@ function showScreen(id) {
 }
 showScreen("screen-top");
 
+/* -------------------------
+   v0.3A：自分のタグ肩書き
+------------------------- */
+
+let selectedMyTags = [];
+
+const myTags = [
+  "ギター",
+  "Guns N’ Roses",
+  "銭湯",
+  "フィリピン",
+  "英語やり直し",
+  "昭和サブカル",
+  "料理",
+  "FX観察",
+  "再出発中",
+  "生活立て直し中",
+  "近所で話せる人",
+  "友達から希望"
+];
+
+function renderMyTags() {
+  const list = document.getElementById("myTagList");
+  if (!list) return;
+
+  list.innerHTML = myTags.map(tag => `
+    <span class="tag ${selectedMyTags.includes(tag) ? "selected" : ""}"
+          onclick="toggleMyTag('${tag}')">${tag}</span>
+  `).join("");
+
+  renderMyTagSummary();
+}
+
+function toggleMyTag(tag) {
+  if (selectedMyTags.includes(tag)) {
+    selectedMyTags = selectedMyTags.filter(t => t !== tag);
+  } else {
+    selectedMyTags.push(tag);
+  }
+  renderMyTags();
+}
+
+function renderMyTagSummary() {
+  const summary = document.getElementById("myTagSummary");
+  if (!summary) return;
+
+  if (selectedMyTags.length === 0) {
+    summary.innerText = "まだ肩書きは選ばれていません。";
+  } else {
+    summary.innerText = `あなたのタグ肩書き：${selectedMyTags.join(" / ")}`;
+  }
+}
+
+renderMyTags();
+
+/* -------------------------
+   ダミーデータ：コミュニティ
+------------------------- */
+
 const communities = [
   { id: 1, name: "♨️ 銭湯帰りの会", description: "銭湯の話、サウナの話、近所の湯の情報をゆるく共有する部屋。", threads: [101, 102], memberCount: 128, topicCount: 24, owner: "おばちゃん見守り中", mood: "初心者歓迎", visibility: "招待制想定", lastActive: "今日 20:14", shortTags: ["銭湯", "サウナ", "近所"] },
   { id: 2, name: "🍳 料理ゆる部", description: "レシピ交換、料理の失敗談、好きな調味料などを語る部屋。", threads: [201], memberCount: 87, topicCount: 12, owner: "ゆる料理長", mood: "まったり", visibility: "公開予定", lastActive: "今日 18:55", shortTags: ["料理", "調味料", "自炊"] },
@@ -12,10 +71,18 @@ const communities = [
   { id: 4, name: "📼 昭和サブカル研究室", description: "昭和の雑誌、音楽、映画、サブカル文化を語る部屋。", threads: [401], memberCount: 54, topicCount: 9, owner: "昭和案内人", mood: "濃いめ", visibility: "半公開", lastActive: "今日 17:22", shortTags: ["昭和", "雑誌", "音楽"] }
 ];
 
+/* -------------------------
+   ダミーデータ：プロフィール
+------------------------- */
+
 const profiles = [
-  { id: 1, name: "あおば", area: "都内西部", communities: [1, 3], tags: ["銭湯", "英語やり直し"], bio: "近所の銭湯めぐりが好き。英語はゆっくり再挑戦中。", hope: "まずはゆるく話せる人", verifiedStatus: "本人確認：v0.2では説明のみ", auntieComment: "銭湯と英語が重なってるで。急がんと、最近行った銭湯の話からでええんちゃう？" },
-  { id: 2, name: "ひより", area: "神奈川東部", communities: [2, 4], tags: ["料理", "昭和サブカル"], bio: "料理は作るのも食べるのも好き。昭和の雑誌を読むのが密かな楽しみ。", hope: "友達から希望", verifiedStatus: "本人確認：v0.2では説明のみ", auntieComment: "料理と昭和が重なってるわ。まずは好きな雑誌の話とか、軽めでいこか。" }
+  { id: 1, name: "あおば", area: "都内西部", communities: [1, 3], tags: ["銭湯", "英語やり直し"], bio: "近所の銭湯めぐりが好き。英語はゆっくり再挑戦中。", hope: "まずはゆるく話せる人", verifiedStatus: "本人確認：v0.3Aでは説明のみ", auntieComment: "銭湯と英語が重なってるで。急がんと、最近行った銭湯の話からでええんちゃう？" },
+  { id: 2, name: "ひより", area: "神奈川東部", communities: [2, 4], tags: ["料理", "昭和サブカル"], bio: "料理は作るのも食べるのも好き。昭和の雑誌を読むのが密かな楽しみ。", hope: "友達から希望", verifiedStatus: "本人確認：v0.3Aでは説明のみ", auntieComment: "料理と昭和が重なってるわ。まずは好きな雑誌の話とか、軽めでいこか。" }
 ];
+
+/* -------------------------
+   ダミーデータ：スレッド
+------------------------- */
 
 const threads = [
   { id: 101, communityId: 1, title: "最近行った銭湯の話しません？", posts: [9001, 9002] },
@@ -24,6 +91,10 @@ const threads = [
   { id: 301, communityId: 3, title: "Duolingoの連続記録どうしてる？", posts: [9005] },
   { id: 401, communityId: 4, title: "昭和の雑誌で好きな特集あった？", posts: [9006] }
 ];
+
+/* -------------------------
+   ダミーデータ：発言
+------------------------- */
 
 const posts = [
   { id: 9001, profileId: 1, text: "昨日は『ゆの森』に行ってきました。露天が気持ちよかったです。", time: "20:14" },
@@ -40,6 +111,8 @@ let currentProfile = null;
 
 function renderCommunities() {
   const list = document.getElementById("communityList");
+  if (!list) return;
+
   list.innerHTML = communities.map(c => `
     <div class="community-card" onclick="openCommunity(${c.id})">
       <h3>${c.name}</h3>

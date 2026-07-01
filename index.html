@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あしあと仲人©️ v0.2</title>
+  <title>あしあと仲人©️ v0.3A</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <section id="screen-top" class="screen">
   <h1>あしあと仲人©️</h1>
   <p class="subtitle">コミュニティから人となりを見る、紹介制SNSのUI模型</p>
@@ -18,13 +19,21 @@
   <p>コミュニティは趣味や価値観の名刺。肩書きのように使います。</p>
   <p>呟きや日記ではなく、コミュニティ内のスレッドで話す設計です。</p>
   <p>接触はノック制。深い接触は本人確認ゲート想定。</p>
+  <button onclick="showScreen('screen-my-tags')">自分のタグ肩書きを選ぶ</button>
+</section>
+
+<section id="screen-my-tags" class="screen">
+  <h2>自分のタグ肩書き</h2>
+  <p class="subtitle">検索条件ではなく、名刺・服・タトゥーのように、あなたの空気を表す肩書きです。</p>
+  <div id="myTagList" class="my-tag-selector"></div>
+  <p id="myTagSummary" class="tag-summary">まだ肩書きは選ばれていません。</p>
   <button onclick="showScreen('screen-communities')">コミュニティを見る</button>
 </section>
 
 <section id="screen-communities" class="screen">
   <h2>コミュニティ一覧</h2>
   <div id="communityList"></div>
-  <button onclick="showScreen('screen-top')">トップへ戻る</button>
+  <button onclick="showScreen('screen-my-tags')">タグ肩書きに戻る</button>
 </section>
 
 <section id="screen-community-detail" class="screen">
