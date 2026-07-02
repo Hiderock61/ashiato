@@ -200,6 +200,11 @@ function renderTagBadges(tags) {
   }).join("");
 }
 
+function truncateText(text, maxLen = 30) {
+  if (!text) return "";
+  return text.length > maxLen ? text.slice(0, maxLen) + "…" : text;
+}
+
 function getEntranceText(count) {
   if (count >= 2) return `話の入口：${count}つあり`;
   if (count === 1) return "話の入口：1つあり";
@@ -291,24 +296,13 @@ function openResidentList() {
     .sort((a, b) => b.commonTagCount - a.commonTagCount);
 
   document.getElementById("residentList").innerHTML = residents.map(p => {
-    const commNames = p.communities
-      .map(cid => {
-        const comm = communities.find(c => c.id === cid);
-        return comm ? comm.name : "";
-      })
-      .filter(Boolean)
-      .join(" / ");
-
     return `
-      <div class="resident-card" onclick="openProfile(${p.id})">
+      <div class="resident-card resident-card-mini" onclick="openProfile(${p.id})">
         <h3>${p.name}</h3>
         <p>${p.area}</p>
-        <p><strong>参加コミュニティ：</strong>${commNames}</p>
-        <p><strong>タグ肩書き：</strong>${renderTagBadges(p.tags)}</p>
-        <p class="entrance-count">${getEntranceText(p.commonTagCount)} <span style="font-size:12px;">（共通肩書き：${p.commonTagCount}個）</span></p>
-        <p><strong>接続希望：</strong>${p.hope}</p>
-        <p><strong>${p.safetyGate}</strong></p>
-        <p class="auntie-mini">👵 ${getEntranceText(p.commonTagCount)}。まずは共通タグか、この部屋の話題からでええんちゃう？</p>
+        <p>${renderTagBadges(p.tags)}</p>
+        <p class="auntie-mini-short">👵 ${truncateText(p.auntieComment, 30)}</p>
+        <div class="resident-card-more">カードを見る ＞</div>
       </div>
     `;
   }).join("");
