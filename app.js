@@ -5,12 +5,25 @@ function showScreen(id) {
 }
 showScreen("screen-top");
 
+/* -------------------------
+   自分のタグ肩書き
+------------------------- */
+
 let selectedMyTags = [];
 
 const myTags = [
-  "ギター", "Guns N’ Roses", "銭湯", "フィリピン",
-  "英語やり直し", "昭和サブカル", "料理", "FX観察",
-  "再出発中", "生活立て直し中", "近所で話せる人", "友達から希望"
+  "ギター",
+  "Guns N’ Roses",
+  "銭湯",
+  "フィリピン",
+  "英語やり直し",
+  "昭和サブカル",
+  "料理",
+  "FX観察",
+  "再出発中",
+  "生活立て直し中",
+  "近所で話せる人",
+  "友達から希望"
 ];
 
 function renderMyTags() {
@@ -38,24 +51,112 @@ function renderMyTagSummary() {
   const summary = document.getElementById("myTagSummary");
   if (!summary) return;
 
-  summary.innerText = selectedMyTags.length === 0
-    ? "まだ肩書きは選ばれていません。"
-    : `あなたのタグ肩書き：${selectedMyTags.join(" / ")}`;
+  if (selectedMyTags.length === 0) {
+    summary.innerText = "まだ肩書きは選ばれていません。";
+  } else {
+    summary.innerText = `あなたのタグ肩書き：${selectedMyTags.join(" / ")}`;
+  }
 }
 
 renderMyTags();
 
+/* -------------------------
+   ダミーデータ
+------------------------- */
+
 const communities = [
-  { id: 1, name: "♨️ 銭湯帰りの会", description: "銭湯の話、サウナの話、近所の湯の情報をゆるく共有する部屋。", threads: [101, 102], members: [1, 3], memberCount: 128, topicCount: 24, owner: "おばちゃん見守り中", mood: "初心者歓迎", visibility: "招待制想定", lastActive: "今日 20:14", shortTags: ["銭湯", "サウナ", "近所"] },
-  { id: 2, name: "🍳 料理ゆる部", description: "レシピ交換、料理の失敗談、好きな調味料などを語る部屋。", threads: [201], members: [2], memberCount: 87, topicCount: 12, owner: "ゆる料理長", mood: "まったり", visibility: "公開予定", lastActive: "今日 18:55", shortTags: ["料理", "調味料", "自炊"] },
-  { id: 3, name: "🗣️ 英語やり直し部", description: "英語の再挑戦を応援する部屋。", threads: [301], members: [1], memberCount: 203, topicCount: 31, owner: "英語おばちゃん", mood: "ゆる勉強", visibility: "招待制想定", lastActive: "今日 19:40", shortTags: ["英語", "勉強", "海外ドラマ"] },
-  { id: 4, name: "📼 昭和サブカル研究室", description: "昭和の雑誌、音楽、映画、サブカル文化を語る部屋。", threads: [401], members: [2, 3], memberCount: 54, topicCount: 9, owner: "昭和案内人", mood: "濃いめ", visibility: "半公開", lastActive: "今日 17:22", shortTags: ["昭和", "雑誌", "音楽"] }
+  {
+    id: 1,
+    name: "♨️ 銭湯帰りの会",
+    description: "銭湯の話、サウナの話、近所の湯の情報をゆるく共有する部屋。",
+    threads: [101, 102],
+    residents: [1, 3],
+    memberCount: 128,
+    topicCount: 24,
+    owner: "おばちゃん見守り中",
+    mood: "初心者歓迎",
+    visibility: "招待制想定",
+    lastActive: "今日 20:14",
+    shortTags: ["銭湯", "サウナ", "近所"]
+  },
+  {
+    id: 2,
+    name: "🍳 料理ゆる部",
+    description: "レシピ交換、料理の失敗談、好きな調味料などを語る部屋。",
+    threads: [201],
+    residents: [2],
+    memberCount: 87,
+    topicCount: 12,
+    owner: "ゆる料理長",
+    mood: "まったり",
+    visibility: "公開予定",
+    lastActive: "今日 18:55",
+    shortTags: ["料理", "調味料", "自炊"]
+  },
+  {
+    id: 3,
+    name: "🗣️ 英語やり直し部",
+    description: "英語の再挑戦を応援する部屋。",
+    threads: [301],
+    residents: [1],
+    memberCount: 203,
+    topicCount: 31,
+    owner: "英語おばちゃん",
+    mood: "ゆる勉強",
+    visibility: "招待制想定",
+    lastActive: "今日 19:40",
+    shortTags: ["英語やり直し", "勉強", "海外"]
+  },
+  {
+    id: 4,
+    name: "📼 昭和サブカル研究室",
+    description: "昭和の雑誌、音楽、映画、サブカル文化を語る部屋。",
+    threads: [401],
+    residents: [2, 3],
+    memberCount: 54,
+    topicCount: 9,
+    owner: "昭和案内人",
+    mood: "濃いめ",
+    visibility: "半公開",
+    lastActive: "今日 17:22",
+    shortTags: ["昭和サブカル", "雑誌", "音楽"]
+  }
 ];
 
 const profiles = [
-  { id: 1, name: "あおば", area: "都内西部", communities: [1, 3], tags: ["銭湯", "英語やり直し"], bio: "近所の銭湯めぐりが好き。英語はゆっくり再挑戦中。", hope: "まずはゆるく話せる人", verifiedStatus: "本人確認：v0.3Bでは説明のみ", auntieComment: "銭湯と英語が重なってるで。急がんと、最近行った銭湯の話からでええんちゃう？" },
-  { id: 2, name: "ひより", area: "神奈川東部", communities: [2, 4], tags: ["料理", "昭和サブカル"], bio: "料理は作るのも食べるのも好き。昭和の雑誌を読むのが密かな楽しみ。", hope: "友達から希望", verifiedStatus: "本人確認：v0.3Bでは説明のみ", auntieComment: "料理と昭和が重なってるわ。まずは好きな雑誌の話とか、軽めでいこか。" },
-  { id: 3, name: "まこと", area: "東京北部", communities: [1, 4], tags: ["ギター", "Guns N’ Roses", "銭湯"], bio: "ギターとGuns N’ Rosesが好き。銭湯は週2で行くタイプ。", hope: "近所で話せる人", verifiedStatus: "本人確認：v0.3Bでは説明のみ", auntieComment: "ギターと銭湯が重なってるで。音楽の話から入るとええ感じやと思うわ。" }
+  {
+    id: 1,
+    name: "あおば",
+    area: "都内西部",
+    communities: [1, 3],
+    tags: ["銭湯", "英語やり直し"],
+    bio: "近所の銭湯めぐりが好き。英語はゆっくり再挑戦中。",
+    hope: "まずはゆるく話せる人",
+    safetyGate: "治安ゲート：v0.3C-miniでは説明のみ",
+    auntieComment: "銭湯と英語が重なってるで。急がんと、最近行った銭湯の話からでええんちゃう？"
+  },
+  {
+    id: 2,
+    name: "ひより",
+    area: "神奈川東部",
+    communities: [2, 4],
+    tags: ["料理", "昭和サブカル"],
+    bio: "料理は作るのも食べるのも好き。昭和の雑誌を読むのが密かな楽しみ。",
+    hope: "友達から希望",
+    safetyGate: "治安ゲート：v0.3C-miniでは説明のみ",
+    auntieComment: "料理と昭和が重なってるわ。まずは好きな雑誌の話とか、軽めでいこか。"
+  },
+  {
+    id: 3,
+    name: "まこと",
+    area: "東京北部",
+    communities: [1, 4],
+    tags: ["ギター", "Guns N’ Roses", "銭湯"],
+    bio: "ギターとGuns N’ Rosesが好き。銭湯は週2で行くタイプ。",
+    hope: "近所で話せる人",
+    safetyGate: "治安ゲート：v0.3C-miniでは説明のみ",
+    auntieComment: "ギターと銭湯が重なってるで。音楽の話から入るとええ感じやと思うわ。"
+  }
 ];
 
 const threads = [
@@ -68,7 +169,7 @@ const threads = [
 
 const posts = [
   { id: 9001, profileId: 1, text: "昨日は『ゆの森』に行ってきました。露天が気持ちよかったです。", time: "20:14" },
-  { id: 9002, profileId: 1, text: "銭湯の後の牛乳ってなんであんなに美味しいんでしょうね。", time: "20:20" },
+  { id: 9002, profileId: 3, text: "ギター練習のあとに銭湯へ行くと、指先までほどける感じがあります。", time: "20:20" },
   { id: 9003, profileId: 1, text: "水風呂の温度、みんなこだわりあります？", time: "21:03" },
   { id: 9004, profileId: 2, text: "最近は『昆布ポン酢』が万能すぎて手放せません。", time: "18:55" },
   { id: 9005, profileId: 1, text: "連続記録は気にしすぎると疲れるので、ゆるく続けてます。", time: "19:40" },
@@ -78,6 +179,10 @@ const posts = [
 let currentCommunity = null;
 let currentThread = null;
 let currentProfile = null;
+
+/* -------------------------
+   共通タグ処理
+------------------------- */
 
 function getCommonTags(myTags, otherTags) {
   return otherTags.filter(t => myTags.includes(t));
@@ -90,7 +195,7 @@ function countCommonTags(myTags, otherTags) {
 function renderTagBadges(tags) {
   return tags.map(tag => {
     const isMatch = selectedMyTags.includes(tag);
-    const className = isMatch ? "tag-match" : "member-tag";
+    const className = isMatch ? "tag-match" : "resident-tag";
     return `<span class="${className}">${tag}</span>`;
   }).join("");
 }
@@ -100,6 +205,10 @@ function getEntranceText(count) {
   if (count === 1) return "話の入口：1つあり";
   return "話の入口：まだ探し中";
 }
+
+/* -------------------------
+   コミュニティ一覧
+------------------------- */
 
 function renderCommunities() {
   const list = document.getElementById("communityList");
@@ -126,12 +235,24 @@ function renderCommunities() {
 }
 renderCommunities();
 
+/* -------------------------
+   コミュニティ詳細
+------------------------- */
+
 function openCommunity(id) {
   currentCommunity = communities.find(c => c.id === id);
   if (!currentCommunity) return;
 
   document.getElementById("communityName").innerText = currentCommunity.name;
   document.getElementById("communityDesc").innerText = currentCommunity.description;
+
+  document.getElementById("communityMeta").innerHTML = `
+    <p>空気感：${currentCommunity.mood}</p>
+    <p>公開範囲：${currentCommunity.visibility}</p>
+    <p>最終更新：${currentCommunity.lastActive}</p>
+    <p>管理人：${currentCommunity.owner}</p>
+    <div>${currentCommunity.shortTags.map(t => `<span class="comm-tag">${t}</span>`).join("")}</div>
+  `;
 
   document.getElementById("communityThreads").innerHTML = currentCommunity.threads.map(tid => {
     const t = threads.find(th => th.id === tid);
@@ -141,22 +262,35 @@ function openCommunity(id) {
   showScreen("screen-community-detail");
 }
 
-function openMemberList() {
+/* -------------------------
+   この部屋の住人
+------------------------- */
+
+function openResidentList() {
   if (!currentCommunity) return;
 
-  document.getElementById("memberListTitle").innerText =
-    `${currentCommunity.name} の参加メンバー`;
+  document.getElementById("residentListTitle").innerText =
+    `${currentCommunity.name} の住人`;
 
-  const members = currentCommunity.members
+  document.getElementById("residentNotice").innerHTML =
+    selectedMyTags.length === 0
+      ? `<div class="notice">タグ肩書き未選択です。肩書きを選ぶと、話の入口が近い住人が上に来ます。</div>`
+      : "";
+
+  const residents = currentCommunity.residents
     .map(pid => profiles.find(p => p.id === pid))
     .filter(Boolean)
     .map(profile => {
       const commonTags = getCommonTags(selectedMyTags, profile.tags);
-      return { ...profile, commonTags, commonTagCount: commonTags.length };
+      return {
+        ...profile,
+        commonTags,
+        commonTagCount: commonTags.length
+      };
     })
     .sort((a, b) => b.commonTagCount - a.commonTagCount);
 
-  document.getElementById("memberList").innerHTML = members.map(p => {
+  document.getElementById("residentList").innerHTML = residents.map(p => {
     const commNames = p.communities
       .map(cid => {
         const comm = communities.find(c => c.id === cid);
@@ -166,21 +300,25 @@ function openMemberList() {
       .join(" / ");
 
     return `
-      <div class="member-card" onclick="openProfile(${p.id})">
+      <div class="resident-card" onclick="openProfile(${p.id})">
         <h3>${p.name}</h3>
         <p>${p.area}</p>
         <p><strong>参加コミュニティ：</strong>${commNames}</p>
         <p><strong>タグ肩書き：</strong>${renderTagBadges(p.tags)}</p>
-        <p class="common-count">共通肩書き：${p.commonTagCount}個 / ${getEntranceText(p.commonTagCount)}</p>
+        <p class="entrance-count">${getEntranceText(p.commonTagCount)} <span style="font-size:12px;">（共通肩書き：${p.commonTagCount}個）</span></p>
         <p><strong>接続希望：</strong>${p.hope}</p>
-        <p><strong>${p.verifiedStatus}</strong></p>
+        <p><strong>${p.safetyGate}</strong></p>
         <p class="auntie-mini">👵 ${getEntranceText(p.commonTagCount)}。まずは共通タグか、この部屋の話題からでええんちゃう？</p>
       </div>
     `;
   }).join("");
 
-  showScreen("screen-members");
+  showScreen("screen-residents");
 }
+
+/* -------------------------
+   スレッド一覧
+------------------------- */
 
 function openThreadList(cid) {
   const comm = communities.find(c => c.id === cid);
@@ -198,9 +336,17 @@ function openThreadList(cid) {
   showScreen("screen-thread-list");
 }
 
+/* -------------------------
+   スレッド本文
+------------------------- */
+
 function openThread(tid) {
   currentThread = threads.find(t => t.id === tid);
   if (!currentThread) return;
+
+  const comm = communities.find(c => c.id === currentThread.communityId);
+  document.getElementById("threadBreadcrumb").innerText =
+    comm ? `${comm.name} ＞ ${currentThread.title}` : currentThread.title;
 
   document.getElementById("threadTitle").innerText = currentThread.title;
 
@@ -214,6 +360,7 @@ function openThread(tid) {
       <div class="post" onclick="openProfile(${prof.id})">
         <strong>${prof.name}</strong>（${p.time}）
         <p>${p.text}</p>
+        <span class="badge">肩書きカードを見る</span>
       </div>
     `;
   }).join("");
@@ -228,6 +375,10 @@ function backToThreadList() {
   }
   openThreadList(currentThread.communityId);
 }
+
+/* -------------------------
+   肩書きカード
+------------------------- */
 
 function openProfile(pid) {
   currentProfile = profiles.find(p => p.id === pid);
@@ -249,25 +400,30 @@ function openProfile(pid) {
       <h3>${currentProfile.name}</h3>
       <p>${currentProfile.area}</p>
       <p><strong>参加コミュニティ：</strong>${commNames}</p>
-      <p><strong>肩書き：</strong>${renderTagBadges(currentProfile.tags)}</p>
-      <p class="common-count">共通肩書き：${commonTagCount}個 / ${getEntranceText(commonTagCount)}</p>
+      <p><strong>タグ肩書き：</strong>${renderTagBadges(currentProfile.tags)}</p>
+      <p class="entrance-count">${getEntranceText(commonTagCount)} <span style="font-size:12px;">（共通肩書き：${commonTagCount}個）</span></p>
       <p>${currentProfile.bio}</p>
       <p><strong>接続希望：</strong>${currentProfile.hope}</p>
-      <p><strong>${currentProfile.verifiedStatus}</strong></p>
+      <p><strong>${currentProfile.safetyGate}</strong></p>
+      <p class="auntie-mini">治安ゲートは、荒らし・業者・なりすましを減らすための仮ゲートです。</p>
     </div>
   `;
 
   showScreen("screen-profile");
 }
 
+/* -------------------------
+   足あと
+------------------------- */
+
 function showFootprint() {
   if (!currentProfile) return;
 
   document.getElementById("footName").innerText =
-    `${currentProfile.name}さんのプロフィールを見た気配がつきました`;
+    `${currentProfile.name}さんの肩書きカードを見た気配がつきました`;
 
   document.getElementById("footTags").innerText =
-    `肩書き：${currentProfile.tags.join(" / ")}`;
+    `タグ肩書き：${currentProfile.tags.join(" / ")}`;
 
   document.getElementById("footHope").innerText =
     `接続希望：${currentProfile.hope}`;
@@ -278,17 +434,30 @@ function showFootprint() {
   showScreen("screen-footprint");
 }
 
+/* -------------------------
+   ノック・おばちゃん紹介文
+------------------------- */
+
+function showAuntieComment() {
+  if (!currentProfile) return;
+
+  const commonCount = countCommonTags(selectedMyTags, currentProfile.tags);
+  document.getElementById("auntieText").innerText =
+    `${currentProfile.auntieComment} ${getEntranceText(commonCount)}。`;
+
+  showScreen("screen-auntie-comment");
+}
+
 function chooseKnock(type) {
   if (!currentProfile) return;
 
   if (type === "auntie") {
-    const commonCount = countCommonTags(selectedMyTags, currentProfile.tags);
-    document.getElementById("auntieText").innerText =
-      `${currentProfile.auntieComment} ${getEntranceText(commonCount)}。`;
-  } else {
-    document.getElementById("auntieText").innerText =
-      `${currentProfile.name}さんに軽くノックしておきました。いきなり話しかけず、まずは気配だけ置いておきます。`;
+    showAuntieComment();
+    return;
   }
+
+  document.getElementById("auntieText").innerText =
+    `${currentProfile.name}さんに気配だけ置いておきました。いきなり話しかけず、まずは足あとくらいでええんです。`;
 
   showScreen("screen-auntie-comment");
 }

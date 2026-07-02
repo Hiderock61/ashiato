@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あしあと仲人©️ v0.3B</title>
+  <title>あしあと仲人©️ v0.3C-mini</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section id="screen-top" class="screen">
   <h1>あしあと仲人©️</h1>
-  <p class="subtitle">コミュニティから人となりを見る、紹介制SNSのUI模型</p>
+  <p class="subtitle">コミュニティから人となりを見る、ほぼmixi骨格の紹介制SNS模型</p>
   <button onclick="showScreen('screen-invite')">はじめる</button>
 </section>
 
 <section id="screen-invite" class="screen">
   <h2>このSNSの考え方</h2>
-  <p>コミュニティは趣味や価値観の名刺。肩書きのように使います。</p>
-  <p>呟きや日記ではなく、コミュニティ内のスレッドで話す設計です。</p>
-  <p>接触はノック制。深い接触は本人確認ゲート想定。</p>
+  <p>顔写真や即DMではなく、コミュニティのスレッドから人となりをゆっくり見ます。</p>
+  <p>タグ肩書きは検索条件ではなく、名刺・服・タトゥーのようなものです。</p>
+  <p>治安ゲートは、荒らし・業者・なりすましを減らすための仕組みです。</p>
   <button onclick="showScreen('screen-my-tags')">自分のタグ肩書きを選ぶ</button>
 </section>
 
 <section id="screen-my-tags" class="screen">
   <h2>自分のタグ肩書き</h2>
-  <p class="subtitle">検索条件ではなく、名刺・服・タトゥーのように、あなたの空気を表す肩書きです。</p>
+  <p class="subtitle">あなたの空気を表す肩書きを選ぶと、話の入口が近い住人が見えやすくなります。</p>
   <div id="myTagList" class="my-tag-selector"></div>
   <p id="myTagSummary" class="tag-summary">まだ肩書きは選ばれていません。</p>
   <button onclick="showScreen('screen-communities')">コミュニティを見る</button>
@@ -39,16 +39,20 @@
 <section id="screen-community-detail" class="screen">
   <h2 id="communityName"></h2>
   <p id="communityDesc"></p>
+  <div id="communityMeta" class="card soft-card"></div>
+
   <h3>最近のスレッド</h3>
   <div id="communityThreads"></div>
-  <button onclick="openMemberList()">参加メンバーを見る</button>
+
+  <button onclick="openResidentList()">この部屋の住人を見る</button>
   <button onclick="showScreen('screen-communities')">コミュニティ一覧へ戻る</button>
 </section>
 
-<section id="screen-members" class="screen">
-  <h2 id="memberListTitle">参加メンバー一覧</h2>
-  <p class="subtitle">自分のタグ肩書きと重なる人ほど上に表示されます。</p>
-  <div id="memberList"></div>
+<section id="screen-residents" class="screen">
+  <h2 id="residentListTitle">この部屋の住人</h2>
+  <p class="subtitle">自分のタグ肩書きと重なる住人ほど上に表示されます。</p>
+  <div id="residentNotice"></div>
+  <div id="residentList"></div>
   <button onclick="showScreen('screen-community-detail')">コミュニティ詳細へ戻る</button>
 </section>
 
@@ -59,35 +63,44 @@
 </section>
 
 <section id="screen-thread-posts" class="screen">
+  <div id="threadBreadcrumb" class="breadcrumb"></div>
   <h2 id="threadTitle"></h2>
   <div id="postList"></div>
   <button onclick="backToThreadList()">スレッド一覧へ戻る</button>
 </section>
 
 <section id="screen-profile" class="screen">
-  <h2>プロフィール</h2>
+  <h2>肩書きカード</h2>
   <div id="profileCard"></div>
   <button onclick="showFootprint()">足あとを見る</button>
+  <button onclick="showScreen('screen-knock')">ノックへ進む</button>
+  <button onclick="showAuntieComment()">おばちゃん紹介文を見る</button>
 </section>
 
 <section id="screen-footprint" class="screen">
-  <h2>見に来た気配</h2>
-  <p id="footName"></p>
-  <p id="footTags"></p>
-  <p id="footHope"></p>
+  <h2>足あと</h2>
+  <div class="card">
+    <p id="footName"></p>
+    <p id="footTags"></p>
+    <p id="footHope"></p>
+  </div>
+  <button onclick="showScreen('screen-profile')">肩書きカードへ戻る</button>
   <button onclick="showScreen('screen-knock')">ノックへ進む</button>
 </section>
 
 <section id="screen-knock" class="screen">
   <h2 id="knockName"></h2>
-  <button onclick="chooseKnock('knock')">ノックする</button>
+  <button onclick="chooseKnock('knock')">気配だけ置く</button>
   <button onclick="chooseKnock('auntie')">おばちゃんに紹介文を頼む</button>
-  <button onclick="showScreen('screen-top')">見送る</button>
+  <button onclick="showScreen('screen-profile')">肩書きカードへ戻る</button>
 </section>
 
 <section id="screen-auntie-comment" class="screen">
   <h2>おばちゃん紹介文</h2>
-  <p id="auntieText"></p>
+  <div class="card auntie-card">
+    <p id="auntieText"></p>
+  </div>
+  <button onclick="showScreen('screen-profile')">肩書きカードへ戻る</button>
   <button onclick="showScreen('screen-top')">トップへ戻る</button>
 </section>
 
