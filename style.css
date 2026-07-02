@@ -188,6 +188,47 @@ button:hover {
   font-weight: 700;
 }
 
+.gate-badge {
+  display: inline-block;
+  margin: 8px 0 0 0;
+}
+
+.profile-section-label {
+  margin: 14px 0 4px 0;
+  font-size: 0.78em;
+  font-weight: 700;
+  color: #8a7a5c;
+  letter-spacing: 0.02em;
+}
+
+.profile-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-recent-post {
+  background: #fdf8f1;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.profile-recent-post p {
+  margin: 2px 0 0 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.profile-recent-time {
+  font-size: 0.75em;
+  color: #999;
+}
+
+.profile-recent-empty {
+  font-size: 0.9em;
+  color: #888;
+}
+
 .tag-match,
 .my-tag-selector .tag.selected {
   display: inline-block;

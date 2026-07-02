@@ -384,28 +384,48 @@ function openProfile(pid) {
   currentProfile = profiles.find(p => p.id === pid);
   if (!currentProfile) return;
 
-  const commNames = currentProfile.communities
-    .map(cid => {
-      const comm = communities.find(c => c.id === cid);
-      return comm ? comm.name : "";
-    })
-    .filter(Boolean)
-    .join(" / ");
+  // よく行く部屋：communities.residents から currentProfile.id を逆引き
+  const frequentRooms = communities.filter(c => c.residents.includes(currentProfile.id));
+  const frequentRoomsHTML = frequentRooms.length
+    ? frequentRooms.map(c => `<span class="comm-tag">${c.name}</span>`).join("")
+    : `<span class="comm-tag">まだ部屋の記録なし</span>`;
 
-  const commonTags = getCommonTags(selectedMyTags, currentProfile.tags);
-  const commonTagCount = commonTags.length;
+  // 最近の発言：posts から profileId 一致、id大きい順、最大2件
+  const recentPosts = posts
+    .filter(p => p.profileId === currentProfile.id)
+    .sort((a, b) => b.id - a.id)
+    .slice(0, 2);
+
+  const recentPostsHTML = recentPosts.length
+    ? recentPosts.map(p => `
+        <div class="profile-recent-post">
+          <span class="profile-recent-time">${p.time}</span>
+          <p>${p.text}</p>
+        </div>
+      `).join("")
+    : `<p class="profile-recent-empty">最近の発言はまだありません。</p>`;
 
   document.getElementById("profileCard").innerHTML = `
     <div class="card">
       <h3>${currentProfile.name}</h3>
       <p>${currentProfile.area}</p>
-      <p><strong>参加コミュニティ：</strong>${commNames}</p>
-      <p><strong>タグ肩書き：</strong>${renderTagBadges(currentProfile.tags)}</p>
-      <p class="entrance-count">${getEntranceText(commonTagCount)} <span style="font-size:12px;">（共通肩書き：${commonTagCount}個）</span></p>
-      <p>${currentProfile.bio}</p>
-      <p><strong>接続希望：</strong>${currentProfile.hope}</p>
-      <p><strong>${currentProfile.safetyGate}</strong></p>
-      <p class="auntie-mini">治安ゲートは、荒らし・業者・なりすましを減らすための仮ゲートです。</p>
+
+      <span class="badge gate-badge">治安ゲート：説明のみ</span>
+
+      <p class="profile-section-label">タグ肩書き</p>
+      <p>${renderTagBadges(currentProfile.tags)}</p>
+
+      <p class="profile-section-label">距離感</p>
+      <p>${currentProfile.hope}</p>
+
+      <p class="profile-section-label">よく行く部屋</p>
+      <div class="comm-tags">${frequentRoomsHTML}</div>
+
+      <p class="profile-section-label">最近の発言</p>
+      <div class="profile-recent-list">${recentPostsHTML}</div>
+
+      <p class="profile-section-label">おばちゃん一言</p>
+      <p class="auntie-mini">👵 ${currentProfile.auntieComment}</p>
     </div>
   `;
 
