@@ -256,16 +256,44 @@ function openCommunity(id) {
   document.getElementById("communityDesc").innerText = currentCommunity.description;
 
   document.getElementById("communityMeta").innerHTML = `
-    <p>空気感：${currentCommunity.mood}</p>
-    <p>公開範囲：${currentCommunity.visibility}</p>
-    <p>最終更新：${currentCommunity.lastActive}</p>
-    <p>管理人：${currentCommunity.owner}</p>
-    <div>${currentCommunity.shortTags.map(t => `<span class="comm-tag">${t}</span>`).join("")}</div>
+    <div class="room-profile">
+      <p class="profile-section-label">この部屋について</p>
+      <p>空気感：${currentCommunity.mood}</p>
+      <p>外からの見え方：${currentCommunity.visibility}</p>
+      <p>最近の気配：${currentCommunity.lastActive}</p>
+      <p>見守り：${currentCommunity.owner}</p>
+      <div class="comm-tags">${currentCommunity.shortTags.map(t => `<span class="comm-tag">${t}</span>`).join("")}</div>
+    </div>
+
+    <div class="room-actions">
+      <p class="profile-section-label">この部屋でできること</p>
+      <ul class="room-actions-list">
+        <li>最近の立ち話を読む</li>
+        <li>気になる発言から肩書きカードを見る</li>
+        <li>この部屋の住人の名札を見る</li>
+      </ul>
+    </div>
   `;
 
   document.getElementById("communityThreads").innerHTML = currentCommunity.threads.map(tid => {
     const t = threads.find(th => th.id === tid);
-    return t ? `<div class="card" onclick="openThread(${t.id})">${t.title}</div>` : "";
+    if (!t) return "";
+
+    const lastPostId = t.posts[t.posts.length - 1];
+    const lastPost = posts.find(po => po.id === lastPostId);
+    const snippet = lastPost ? truncateText(lastPost.text, 36) : "";
+    const lastTime = lastPost ? lastPost.time : "";
+
+    return `
+      <div class="thread-preview" onclick="openThread(${t.id})">
+        <p class="thread-preview-title">${t.title}</p>
+        <p class="thread-preview-snippet">${snippet}</p>
+        <div class="thread-preview-meta">
+          <span>投稿数：${t.posts.length}</span>
+          <span>最終発言：${lastTime}</span>
+        </div>
+      </div>
+    `;
   }).join("");
 
   showScreen("screen-community-detail");

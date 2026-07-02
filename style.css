@@ -192,6 +192,53 @@ button:hover {
   margin-bottom: 12px;
 }
 
+.room-profile p {
+  margin: 4px 0;
+}
+
+.room-actions {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #ece3d3;
+}
+
+.room-actions-list {
+  margin: 6px 0 0 0;
+  padding-left: 1.2em;
+  font-size: 0.9em;
+  color: #6b5a45;
+  line-height: 1.9;
+}
+
+.thread-preview {
+  background: #fffaf3;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  cursor: pointer;
+}
+
+.thread-preview-title {
+  margin: 0;
+  font-weight: 700;
+  color: #333;
+}
+
+.thread-preview-snippet {
+  margin: 4px 0 0 0;
+  font-size: 0.88em;
+  color: #777;
+}
+
+.thread-preview-meta {
+  margin-top: 8px;
+  display: flex;
+  gap: 14px;
+  font-size: 0.75em;
+  color: #999;
+}
+
 .comm-tag,
 .badge,
 .resident-tag {
