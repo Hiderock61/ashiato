@@ -219,25 +219,35 @@ function getEntranceText(count) {
    コミュニティ一覧
 ------------------------- */
 
+function getCommunityVoice(community) {
+  const lastThreadId = community.threads[community.threads.length - 1];
+  const thread = threads.find(t => t.id === lastThreadId);
+  if (!thread) return "まだ立ち話は聞こえてきません。";
+
+  const lastPostId = thread.posts[thread.posts.length - 1];
+  const lastPost = posts.find(p => p.id === lastPostId);
+  if (!lastPost) return "まだ立ち話は聞こえてきません。";
+
+  return truncateText(lastPost.text, 36);
+}
+
 function renderCommunities() {
   const list = document.getElementById("communityList");
   if (!list) return;
 
   list.innerHTML = communities.map(c => `
-    <div class="community-card" onclick="openCommunity(${c.id})">
+    <div class="community-card community-signboard" onclick="openCommunity(${c.id})">
       <h3>${c.name}</h3>
-      <p class="comm-desc">${c.description}</p>
-      <div class="comm-meta">
-        <span>👥 ${c.memberCount}人</span>
-        <span>📚 ${c.topicCount}トピック</span>
-        <span>🌱 ${c.mood}</span>
+      <div class="comm-tags">${c.shortTags.slice(0, 3).map(t => `<span class="comm-tag">${t}</span>`).join("")}</div>
+      <div class="community-voice">
+        <p class="community-voice-label">中から聞こえる声</p>
+        <p class="community-voice-text">${getCommunityVoice(c)}</p>
       </div>
-      <div class="comm-meta">
-        <span>🔒 ${c.visibility}</span>
-        <span>⏱ ${c.lastActive}</span>
+      <div class="community-sign-meta">
+        <span>見え方：${c.visibility}</span>
+        <span>${c.memberCount}人が出入り中</span>
+        <span>${c.topicCount}件の立ち話</span>
       </div>
-      <div class="comm-meta"><span>管理人：${c.owner}</span></div>
-      <div class="comm-tags">${c.shortTags.map(t => `<span class="comm-tag">${t}</span>`).join("")}</div>
       <div class="comm-enter">この部屋をのぞく</div>
     </div>
   `).join("");
@@ -475,7 +485,7 @@ function showFootprint() {
     `タグ肩書き：${currentProfile.tags.join(" / ")}`;
 
   document.getElementById("footHope").innerText =
-    `接続希望：${currentProfile.hope}`;
+    `距離感：${currentProfile.hope}`;
 
   document.getElementById("knockName").innerText =
     `${currentProfile.name}さんに、どう接続しますか？`;
