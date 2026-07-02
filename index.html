@@ -11,7 +11,7 @@
 <section id="screen-top" class="screen">
   <h1>あしあと仲人©️</h1>
   <p class="subtitle">コミュニティから人となりを見る、ほぼmixi骨格の紹介制SNS模型</p>
-  <button onclick="showScreen('screen-invite')">はじめる</button>
+  <button class="btn-primary" onclick="showScreen('screen-invite')">はじめる</button>
 </section>
 
 <section id="screen-invite" class="screen">
@@ -19,7 +19,7 @@
   <p>顔写真や即DMではなく、コミュニティのスレッドから人となりをゆっくり見ます。</p>
   <p>タグ肩書きは検索条件ではなく、名刺・服・タトゥーのようなものです。</p>
   <p>治安ゲートは、荒らし・業者・なりすましを減らすための仕組みです。</p>
-  <button onclick="showScreen('screen-my-tags')">自分のタグ肩書きを選ぶ</button>
+  <button class="btn-primary" onclick="showScreen('screen-my-tags')">自分のタグ肩書きを選ぶ</button>
 </section>
 
 <section id="screen-my-tags" class="screen">
@@ -27,13 +27,13 @@
   <p class="subtitle">あなたの空気を表す肩書きを選ぶと、話の入口が近い住人が見えやすくなります。</p>
   <div id="myTagList" class="my-tag-selector"></div>
   <p id="myTagSummary" class="tag-summary">まだ肩書きは選ばれていません。</p>
-  <button onclick="showScreen('screen-communities')">コミュニティを見る</button>
+  <button class="btn-primary" onclick="showScreen('screen-communities')">コミュニティを見る</button>
 </section>
 
 <section id="screen-communities" class="screen">
   <h2>コミュニティ一覧</h2>
   <div id="communityList"></div>
-  <button onclick="showScreen('screen-my-tags')">タグ肩書きに戻る</button>
+  <button class="btn-back" onclick="showScreen('screen-my-tags')">←タグ肩書きに戻る</button>
 </section>
 
 <section id="screen-community-detail" class="screen">
@@ -44,8 +44,8 @@
   <h3>最近のスレッド</h3>
   <div id="communityThreads"></div>
 
-  <button onclick="openResidentList()">この部屋の住人を見る</button>
-  <button onclick="showScreen('screen-communities')">コミュニティ一覧へ戻る</button>
+  <button class="btn-secondary" onclick="openResidentList()">この部屋の住人を見る</button>
+  <button class="btn-back" onclick="showScreen('screen-communities')">←コミュニティ一覧へ戻る</button>
 </section>
 
 <section id="screen-residents" class="screen">
@@ -53,28 +53,28 @@
   <p class="subtitle">自分のタグ肩書きと重なる住人ほど上に表示されます。</p>
   <div id="residentNotice"></div>
   <div id="residentList"></div>
-  <button onclick="showScreen('screen-community-detail')">コミュニティ詳細へ戻る</button>
+  <button class="btn-back" onclick="showScreen('screen-community-detail')">←コミュニティ詳細へ戻る</button>
 </section>
 
 <section id="screen-thread-list" class="screen">
   <h2 id="threadListTitle"></h2>
   <div id="threadList"></div>
-  <button onclick="showScreen('screen-community-detail')">コミュニティ詳細へ戻る</button>
+  <button class="btn-back" onclick="showScreen('screen-community-detail')">←コミュニティ詳細へ戻る</button>
 </section>
 
 <section id="screen-thread-posts" class="screen">
   <div id="threadBreadcrumb" class="breadcrumb"></div>
   <h2 id="threadTitle"></h2>
   <div id="postList"></div>
-  <button onclick="backToThreadList()">スレッド一覧へ戻る</button>
+  <button class="btn-back" onclick="backToThreadList()">←スレッド一覧へ戻る</button>
 </section>
 
 <section id="screen-profile" class="screen">
   <h2>肩書きカード</h2>
   <div id="profileCard"></div>
-  <button onclick="showFootprint()">足あとを見る</button>
-  <button onclick="showScreen('screen-knock')">ノックへ進む</button>
-  <button onclick="showAuntieComment()">おばちゃん紹介文を見る</button>
+  <button class="btn-secondary" onclick="showFootprint()">足あとを見る</button>
+  <button class="btn-primary" onclick="showScreen('screen-knock')">ノックへ進む</button>
+  <button class="btn-linkish" onclick="showAuntieComment()">おばちゃん紹介文を見る</button>
 </section>
 
 <section id="screen-footprint" class="screen">
@@ -84,15 +84,15 @@
     <p id="footTags"></p>
     <p id="footHope"></p>
   </div>
-  <button onclick="showScreen('screen-profile')">肩書きカードへ戻る</button>
-  <button onclick="showScreen('screen-knock')">ノックへ進む</button>
+  <button class="btn-back" onclick="showScreen('screen-profile')">←肩書きカードへ戻る</button>
+  <button class="btn-primary" onclick="showScreen('screen-knock')">ノックへ進む</button>
 </section>
 
 <section id="screen-knock" class="screen">
   <h2 id="knockName"></h2>
-  <button onclick="chooseKnock('knock')">気配だけ置く</button>
-  <button onclick="chooseKnock('auntie')">おばちゃんに紹介文を頼む</button>
-  <button onclick="showScreen('screen-profile')">肩書きカードへ戻る</button>
+  <button class="btn-primary" onclick="chooseKnock('knock')">気配だけ置く</button>
+  <button class="btn-secondary" onclick="chooseKnock('auntie')">おばちゃんに紹介文を頼む</button>
+  <button class="btn-back" onclick="showScreen('screen-profile')">←肩書きカードへ戻る</button>
 </section>
 
 <section id="screen-auntie-comment" class="screen">
@@ -100,8 +100,8 @@
   <div class="card auntie-card">
     <p id="auntieText"></p>
   </div>
-  <button onclick="showScreen('screen-profile')">肩書きカードへ戻る</button>
-  <button onclick="showScreen('screen-top')">トップへ戻る</button>
+  <button class="btn-back" onclick="showScreen('screen-profile')">←肩書きカードへ戻る</button>
+  <button class="btn-back" onclick="showScreen('screen-top')">←トップへ戻る</button>
 </section>
 
 <script src="app.js"></script>

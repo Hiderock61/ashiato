@@ -43,6 +43,85 @@ button:hover {
   background: #ff9f50;
 }
 
+/* -------------------------
+   ボタン役割別クラス（v0.3C-mini 追加分）
+   目的：進む・分岐・戻る・補助の見た目を分ける
+   既存の button 要素構造・onclick・関数は変更していません
+------------------------- */
+
+/* 主行動：画面の中で一番進めてほしい行動（大きい・太字・オレンジ） */
+.btn-primary {
+  width: 100%;
+  padding: 16px;
+  margin-top: 16px;
+  font-size: 1.08em;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  background: #ffb86c;
+  color: #333;
+}
+
+.btn-primary:hover {
+  background: #ff9f50;
+}
+
+/* 分岐：複数の見る先がある選択（中くらい・薄ベージュ） */
+.btn-secondary {
+  width: 100%;
+  padding: 12px;
+  margin-top: 14px;
+  font-size: 0.98em;
+  font-weight: 600;
+  border: 1px solid #e8dcc8;
+  border-radius: 10px;
+  background: #f4ead9;
+  color: #5f4720;
+}
+
+.btn-secondary:hover {
+  background: #ecdec3;
+}
+
+/* 戻る：前の画面へ戻るだけの弱い行動（白背景・グレー枠） */
+.btn-back {
+  width: 100%;
+  padding: 10px;
+  margin-top: 12px;
+  font-size: 0.9em;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background: #fff;
+  color: #777;
+}
+
+.btn-back:hover {
+  background: #f5f5f5;
+  color: #555;
+}
+
+/* 補助：カード内などの副次的な行動（小さめ・文字リンク風） */
+.btn-linkish {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+  margin-top: 10px;
+  font-size: 0.85em;
+  font-weight: 500;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #38516a;
+  text-decoration: underline;
+}
+
+.btn-linkish:hover {
+  color: #1f3346;
+  background: #f4f7fa;
+}
+
 .card,
 .resident-card {
   background: white;
