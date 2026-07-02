@@ -200,6 +200,10 @@ function renderTagBadges(tags) {
   }).join("");
 }
 
+function renderThreadTagBadges(tags) {
+  return tags.map(tag => `<span class="thread-tag">${tag}</span>`).join("");
+}
+
 function truncateText(text, maxLen = 30) {
   if (!text) return "";
   return text.length > maxLen ? text.slice(0, maxLen) + "…" : text;
@@ -352,9 +356,12 @@ function openThread(tid) {
 
     return `
       <div class="post" onclick="openProfile(${prof.id})">
-        <strong>${prof.name}</strong>（${p.time}）
+        <div class="thread-post-head">
+          <span class="thread-post-name">${prof.name} ＞</span>
+          <span class="thread-post-time">${p.time}</span>
+        </div>
         <p>${p.text}</p>
-        <span class="badge">肩書きカードを見る</span>
+        <div class="thread-tags">${renderThreadTagBadges(prof.tags.slice(0, 3))}</div>
       </div>
     `;
   }).join("");

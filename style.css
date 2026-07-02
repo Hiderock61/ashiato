@@ -287,6 +287,39 @@ button:hover {
   color: #333;
 }
 
+.thread-post-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.thread-post-name {
+  font-weight: 700;
+  font-size: 0.95em;
+  color: #333;
+}
+
+.thread-post-time {
+  font-size: 0.78em;
+  color: #999;
+}
+
+.thread-tags {
+  margin-top: 8px;
+}
+
+.thread-tag {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid #e5ddcd;
+  padding: 2px 8px;
+  margin: 2px 4px 0 0;
+  border-radius: 999px;
+  font-size: 0.72em;
+  color: #a99b7f;
+}
+
 .my-tag-selector {
   display: flex;
   flex-wrap: wrap;
