@@ -3,31 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あしあと仲人©️ v0.4E</title>
+  <title>あしあと仲人©️ v0.4F</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <section id="screen-top" class="screen">
   <h1>あしあと仲人©️</h1>
-  <p class="subtitle">コミュニティから人となりを見る、ほぼmixi骨格の紹介制SNS模型</p>
-  <button class="btn-primary" onclick="showScreen('screen-invite')">はじめる</button>
+  <p class="subtitle">急がないつながり方を試したい人のための、表札街SNS模型です。<br>部屋の表札をのぞき、立ち話から人となりをゆっくり読みます。</p>
+  <button class="btn-primary" onclick="showScreen('screen-invite')">街の入口へ</button>
 </section>
 
 <section id="screen-invite" class="screen">
-  <h2>このSNSの考え方</h2>
-  <p>顔写真や即DMではなく、コミュニティのスレッドから人となりをゆっくり見ます。</p>
-  <p>タグ肩書きは検索条件ではなく、名刺・服・タトゥーのようなものです。</p>
-  <p>治安ゲートは、荒らし・業者・なりすましを減らすための仕組みです。</p>
-  <button class="btn-primary" onclick="showScreen('screen-my-tags')">自分のタグ肩書きを選ぶ</button>
+  <h2>入口のご案内</h2>
+  <p>ここは、言葉の温度で人となりを読む小さな街です。</p>
+  <p>顔写真や即DMで相手を探すのではなく、部屋の表札をのぞき、立ち話を読み、気になったら肩書きカードを見ます。</p>
+  <h3>この街の3つのこと</h3>
+  <ol>
+    <li>顔写真や、いきなりのDMはありません。</li>
+    <li>コミュニティの立ち話から、ゆっくり人となりを見ます。</li>
+    <li>治安ゲートは、荒らし・業者・なりすましを減らすための見守りです。</li>
+  </ol>
+  <button class="btn-primary" onclick="showScreen('screen-my-tags')">今日の名札をえらぶ</button>
 </section>
 
 <section id="screen-my-tags" class="screen">
-  <h2>自分のタグ肩書き</h2>
-  <p class="subtitle">あなたの空気を表す肩書きを選ぶと、話の入口が近い住人が見えやすくなります。</p>
+  <h2>今日の名札をえらぶ</h2>
+  <p class="subtitle">気になる言葉をいくつか選んでください。<br>これは条件検索ではなく、表札街を歩くときの小さな名札です。</p>
   <div id="myTagList" class="my-tag-selector"></div>
   <p id="myTagSummary" class="tag-summary">まだ肩書きは選ばれていません。</p>
-  <button class="btn-primary" onclick="showScreen('screen-communities')">コミュニティを見る</button>
+  <button class="btn-primary" onclick="showScreen('screen-communities')">表札街へ行く</button>
 </section>
 
 <section id="screen-communities" class="screen">
