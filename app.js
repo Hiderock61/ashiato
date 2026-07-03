@@ -479,7 +479,7 @@ function showFootprint() {
   if (!currentProfile) return;
 
   document.getElementById("footName").innerText =
-    `${currentProfile.name}さんの肩書きカードを見た気配がつきました`;
+    `${currentProfile.name}さんの肩書きカードに、そっと足あとを残しました`;
 
   document.getElementById("footTags").innerText =
     `タグ肩書き：${currentProfile.tags.join(" / ")}`;
@@ -488,7 +488,7 @@ function showFootprint() {
     `距離感：${currentProfile.hope}`;
 
   document.getElementById("knockName").innerText =
-    `${currentProfile.name}さんに、どう接続しますか？`;
+    `${currentProfile.name}さんに、どんな合図を置きますか？`;
 
   showScreen("screen-footprint");
 }
@@ -516,7 +516,7 @@ function chooseKnock(type) {
   }
 
   document.getElementById("auntieText").innerText =
-    `${currentProfile.name}さんに気配だけ置いておきました。いきなり話しかけず、まずは足あとくらいでええんです。`;
+    `${currentProfile.name}さんに、そっと気配だけ置いておきました。いきなり話しかけず、今日はここまででも大丈夫です。`;
 
   showScreen("screen-auntie-comment");
 }

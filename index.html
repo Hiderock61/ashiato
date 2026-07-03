@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あしあと仲人©️ v0.4G</title>
+  <title>あしあと仲人©️ v0.4H</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -77,9 +77,9 @@
 <section id="screen-profile" class="screen">
   <h2>肩書きカード</h2>
   <div id="profileCard"></div>
-  <button class="btn-secondary" onclick="showFootprint()">足あとを見る</button>
-  <button class="btn-primary" onclick="showScreen('screen-knock')">ノックへ進む</button>
-  <button class="btn-linkish" onclick="showAuntieComment()">おばちゃん紹介文を見る</button>
+  <button class="btn-secondary" onclick="showFootprint()">そっと足あとを残す</button>
+  <button class="btn-primary" onclick="showScreen('screen-knock')">合図をえらぶ</button>
+  <button class="btn-linkish" onclick="showAuntieComment()">おばちゃんのひとことを見る</button>
 </section>
 
 <section id="screen-footprint" class="screen">
@@ -90,18 +90,18 @@
     <p id="footHope"></p>
   </div>
   <button class="btn-back" onclick="showScreen('screen-profile')">←肩書きカードへ戻る</button>
-  <button class="btn-primary" onclick="showScreen('screen-knock')">ノックへ進む</button>
+  <button class="btn-primary" onclick="showScreen('screen-knock')">合図をえらぶ</button>
 </section>
 
 <section id="screen-knock" class="screen">
   <h2 id="knockName"></h2>
-  <button class="btn-primary" onclick="chooseKnock('knock')">気配だけ置く</button>
-  <button class="btn-secondary" onclick="chooseKnock('auntie')">おばちゃんに紹介文を頼む</button>
+  <button class="btn-primary" onclick="chooseKnock('knock')">そっと気配だけ置く</button>
+  <button class="btn-secondary" onclick="chooseKnock('auntie')">おばちゃんに言葉を整えてもらう</button>
   <button class="btn-back" onclick="showScreen('screen-profile')">←肩書きカードへ戻る</button>
 </section>
 
 <section id="screen-auntie-comment" class="screen">
-  <h2>おばちゃん紹介文</h2>
+  <h2>おばちゃんのひとこと</h2>
   <div class="card auntie-card">
     <p id="auntieText"></p>
   </div>
