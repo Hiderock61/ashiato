@@ -178,6 +178,39 @@ button:hover {
   margin-bottom: 10px;
 }
 
+.community-signboard {
+  padding-bottom: 14px;
+}
+
+.community-voice {
+  background: #fdf8f1;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin: 10px 0;
+}
+
+.community-voice-label {
+  margin: 0;
+  font-size: 0.72em;
+  font-weight: 700;
+  color: #a99b7f;
+}
+
+.community-voice-text {
+  margin: 4px 0 0 0;
+  font-size: 0.9em;
+  color: #555;
+  line-height: 1.6;
+}
+
+.community-sign-meta {
+  font-size: 0.8em;
+  color: #777;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
 .comm-meta {
   font-size: 0.82em;
   color: #666;
