@@ -500,9 +500,8 @@ function showFootprint() {
 function showAuntieComment() {
   if (!currentProfile) return;
 
-  const commonCount = countCommonTags(selectedMyTags, currentProfile.tags);
   document.getElementById("auntieText").innerText =
-    `${currentProfile.auntieComment} ${getEntranceText(commonCount)}。`;
+    `${currentProfile.auntieComment} 急がんでええから、まずは軽い一言くらいの小さな合図でええと思うで。`;
 
   showScreen("screen-auntie-comment");
 }
