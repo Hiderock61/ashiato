@@ -299,7 +299,7 @@ function openCommunity(id) {
         <p class="thread-preview-title">${t.title}</p>
         <p class="thread-preview-snippet">${snippet}</p>
         <div class="thread-preview-meta">
-          <span>投稿数：${t.posts.length}</span>
+          <span>これまでの立ち話：${t.posts.length}</span>
           <span>最終発言：${lastTime}</span>
         </div>
       </div>
