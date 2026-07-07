@@ -219,6 +219,26 @@ function getEntranceText(count) {
    コミュニティ一覧
 ------------------------- */
 
+function getCommunityPresenceText(id) {
+  const presenceMap = {
+    1: "にぎやか",
+    2: "ほどよく行き交う",
+    3: "よく行き交う",
+    4: "静かに佇む"
+  };
+  return presenceMap[id] || "気配あり";
+}
+
+function getCommunityTalkText(id) {
+  const talkMap = {
+    1: "あちこちで聞こえる",
+    2: "ぽつぽつ聞こえる",
+    3: "あちこちで続いている",
+    4: "じわじわ続いている"
+  };
+  return talkMap[id] || "ぽつぽつ聞こえる";
+}
+
 function getCommunityVoice(community) {
   const lastThreadId = community.threads[community.threads.length - 1];
   const thread = threads.find(t => t.id === lastThreadId);
@@ -245,8 +265,8 @@ function renderCommunities() {
       </div>
       <div class="community-sign-meta">
         <span>見え方：${c.visibility}</span>
-        <span>${c.memberCount}人が出入り中</span>
-        <span>${c.topicCount}件の立ち話</span>
+        <span>人の気配：${getCommunityPresenceText(c.id)}</span>
+        <span>立ち話：${getCommunityTalkText(c.id)}</span>
       </div>
       <div class="comm-enter">この部屋をのぞく</div>
     </div>
