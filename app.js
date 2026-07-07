@@ -278,7 +278,7 @@ function openCommunity(id) {
     <div class="room-actions">
       <p class="profile-section-label">この部屋でできること</p>
       <ul class="room-actions-list">
-        <li>最近の立ち話を読む</li>
+        <li>この部屋の立ち話を読む</li>
         <li>気になる発言から肩書きカードを見る</li>
         <li>この部屋の住人の名札を見る</li>
       </ul>
@@ -299,7 +299,7 @@ function openCommunity(id) {
         <p class="thread-preview-title">${t.title}</p>
         <p class="thread-preview-snippet">${snippet}</p>
         <div class="thread-preview-meta">
-          <span>これまでの立ち話：${t.posts.length}</span>
+          <span>投稿数：${t.posts.length}</span>
           <span>最終発言：${lastTime}</span>
         </div>
       </div>
