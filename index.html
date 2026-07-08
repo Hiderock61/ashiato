@@ -10,6 +10,7 @@
 
 <section id="screen-top" class="screen">
   <h1>あしあと仲人©️</h1>
+  <p class="subtitle"><strong>人を探すな。場を探せ。</strong><br>ここは、人を条件で検索する場所ではありません。<br>気になる言葉のコミュニティをのぞき、そこで交わされる立ち話に耳をすます場所です。</p>
   <p class="subtitle">急がないつながり方を試したい人のための、表札街SNS模型です。<br>部屋の表札をのぞき、立ち話から人となりをゆっくり読みます。</p>
   <button class="btn-primary" onclick="showScreen('screen-invite')">街の入口へ</button>
 </section>
@@ -28,17 +29,19 @@
 </section>
 
 <section id="screen-my-tags" class="screen">
-  <h2>今日、気になる表札ことば</h2>
-  <p class="subtitle">ここは、人を条件で検索する場所ではありません。<br>街のあちこちの部屋から、かすかに漏れ聞こえてくる言葉たちです。<br>気になる言葉を少しだけ選んで、その言葉の通りへ足を踏み入れてみてください。</p>
+  <h2>今日の名札をえらぶ</h2>
+  <p class="subtitle">気になる言葉をいくつか選んでください。<br>これは条件検索ではなく、表札街を歩くときの小さな名札です。</p>
+  <p class="subtitle">表札ことばは、人を絞り込むタグではありません。<br>気になる場やコミュニティを探すための手がかりです。<br>このデモでは、あらかじめ置かれた表札ことばから選びます。</p>
   <div id="myTagList" class="my-tag-selector"></div>
   <p id="myTagSummary" class="tag-summary">まだ肩書きは選ばれていません。</p>
-  <button class="btn-primary" onclick="showScreen('screen-communities')">表札街へ歩く</button>
+  <button class="btn-primary" onclick="showScreen('screen-communities')">表札街へ行く</button>
 </section>
 
 <section id="screen-communities" class="screen">
   <h2>表札街</h2>
+  <p class="subtitle">ここには、人ではなくコミュニティが並びます。<br>気になる部屋をのぞいて、立ち話に耳をすませます。</p>
   <div id="communityList"></div>
-  <button class="btn-back" onclick="showScreen('screen-my-tags')">←表札ことばへ戻る</button>
+  <button class="btn-back" onclick="showScreen('screen-my-tags')">←今日の名札へ戻る</button>
 </section>
 
 <section id="screen-community-detail" class="screen">
@@ -47,6 +50,7 @@
   <div id="communityMeta" class="card soft-card"></div>
 
   <h3>この部屋の立ち話</h3>
+  <p class="subtitle">立ち話とは、このコミュニティで交わされるゆるい会話です。<br>今のデモでは読むだけです。<br>本体では、コミュニティに参加すると立ち話に加われる想定です。</p>
   <div id="communityThreads"></div>
 
   <button class="btn-secondary" onclick="openResidentList()">この部屋の住人を見る</button>
@@ -55,7 +59,7 @@
 
 <section id="screen-residents" class="screen">
   <h2 id="residentListTitle">この部屋の住人</h2>
-  <p class="subtitle">持ってきた表札ことばと重なる住人の気配が、少し見えやすくなります。</p>
+  <p class="subtitle">自分のタグ肩書きと重なる住人ほど上に表示されます。</p>
   <div id="residentNotice"></div>
   <div id="residentList"></div>
   <button class="btn-back" onclick="showScreen('screen-community-detail')">←部屋の玄関へ戻る</button>
