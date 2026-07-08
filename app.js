@@ -300,7 +300,10 @@ function openCommunity(id) {
     </div>
 
     <div class="room-actions">
-      <p class="profile-section-label">この部屋でできること</p>
+      <p class="profile-section-label">この部屋との関わり方</p>
+      <p>まずは、外からそっとのぞくところから。</p>
+      <p>今のデモでは、部屋の説明と立ち話を読むことができます。</p>
+      <p>本体では、この部屋に参加すると、所属コミュニティとして肩書きカードに載り、立ち話に加われる想定です。</p>
       <ul class="room-actions-list">
         <li>この部屋の立ち話を読む</li>
         <li>気になる発言から肩書きカードを見る</li>
@@ -477,6 +480,12 @@ function openProfile(pid) {
 
       <p class="profile-section-label">表札ことば・所属の手がかり</p>
       <p>${renderTagBadges(currentProfile.tags)}</p>
+
+      <div class="notice">
+        所属コミュニティは、その人の名刺になります。<br>
+        どんな部屋にいて、どんな立ち話に加わっているか。<br>
+        それが、プロフィールより先に見える人となりです。
+      </div>
 
       <p class="profile-section-label">距離感</p>
       <p>${currentProfile.hope}</p>
