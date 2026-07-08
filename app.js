@@ -12,17 +12,21 @@ showScreen("screen-top");
 let selectedMyTags = [];
 
 const myTags = [
+  "音楽",
   "ギター",
-  "Guns N’ Roses",
+  "ロック",
   "銭湯",
-  "フィリピン",
-  "英語やり直し",
-  "昭和サブカル",
   "料理",
-  "FX観察",
+  "英語やり直し",
+  "近所",
+  "雑談",
+  "散歩",
+  "本・雑誌",
+  "昭和サブカル",
   "再出発中",
   "生活立て直し中",
-  "近所で話せる人",
+  "ゆるく話したい",
+  "ひとり時間も大事",
   "友達から希望"
 ];
 
@@ -52,9 +56,9 @@ function renderMyTagSummary() {
   if (!summary) return;
 
   if (selectedMyTags.length === 0) {
-    summary.innerText = "まだ肩書きは選ばれていません。";
+    summary.innerText = "まだ表札ことばは選ばれていません。";
   } else {
-    summary.innerText = `あなたのタグ肩書き：${selectedMyTags.join(" / ")}`;
+    summary.innerText = `今日持って歩く表札ことば：${selectedMyTags.join(" / ")}`;
   }
 }
 
@@ -341,7 +345,7 @@ function openResidentList() {
 
   document.getElementById("residentNotice").innerHTML =
     selectedMyTags.length === 0
-      ? `<div class="notice">タグ肩書き未選択です。肩書きを選ぶと、話の入口が近い住人が上に来ます。</div>`
+      ? `<div class="notice">表札ことばがまだ選ばれていません。ことばを持って歩くと、話の入口が近い住人の気配が少し見えやすくなります。</div>`
       : "";
 
   const residents = currentCommunity.residents

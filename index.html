@@ -28,17 +28,17 @@
 </section>
 
 <section id="screen-my-tags" class="screen">
-  <h2>今日の名札をえらぶ</h2>
-  <p class="subtitle">気になる言葉をいくつか選んでください。<br>これは条件検索ではなく、表札街を歩くときの小さな名札です。</p>
+  <h2>今日、気になる表札ことば</h2>
+  <p class="subtitle">ここは、人を条件で検索する場所ではありません。<br>街のあちこちの部屋から、かすかに漏れ聞こえてくる言葉たちです。<br>気になる言葉を少しだけ選んで、その言葉の通りへ足を踏み入れてみてください。</p>
   <div id="myTagList" class="my-tag-selector"></div>
   <p id="myTagSummary" class="tag-summary">まだ肩書きは選ばれていません。</p>
-  <button class="btn-primary" onclick="showScreen('screen-communities')">表札街へ行く</button>
+  <button class="btn-primary" onclick="showScreen('screen-communities')">表札街へ歩く</button>
 </section>
 
 <section id="screen-communities" class="screen">
   <h2>表札街</h2>
   <div id="communityList"></div>
-  <button class="btn-back" onclick="showScreen('screen-my-tags')">←今日の名札へ戻る</button>
+  <button class="btn-back" onclick="showScreen('screen-my-tags')">←表札ことばへ戻る</button>
 </section>
 
 <section id="screen-community-detail" class="screen">
@@ -55,7 +55,7 @@
 
 <section id="screen-residents" class="screen">
   <h2 id="residentListTitle">この部屋の住人</h2>
-  <p class="subtitle">自分のタグ肩書きと重なる住人ほど上に表示されます。</p>
+  <p class="subtitle">持ってきた表札ことばと重なる住人の気配が、少し見えやすくなります。</p>
   <div id="residentNotice"></div>
   <div id="residentList"></div>
   <button class="btn-back" onclick="showScreen('screen-community-detail')">←部屋の玄関へ戻る</button>
