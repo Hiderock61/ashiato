@@ -6,7 +6,7 @@ function showScreen(id) {
 showScreen("screen-top");
 
 /* -------------------------
-   自分のタグ肩書き
+   表札ことば
 ------------------------- */
 
 let selectedMyTags = [];
@@ -304,7 +304,7 @@ function openCommunity(id) {
       <ul class="room-actions-list">
         <li>この部屋の立ち話を読む</li>
         <li>気になる発言から肩書きカードを見る</li>
-        <li>この部屋の住人の名札を見る</li>
+        <li>この部屋の住人を見る</li>
       </ul>
     </div>
   `;
@@ -475,7 +475,7 @@ function openProfile(pid) {
 
       <span class="badge gate-badge">治安ゲート：説明のみ</span>
 
-      <p class="profile-section-label">タグ肩書き</p>
+      <p class="profile-section-label">表札ことば・所属の手がかり</p>
       <p>${renderTagBadges(currentProfile.tags)}</p>
 
       <p class="profile-section-label">距離感</p>
@@ -506,7 +506,7 @@ function showFootprint() {
     `${currentProfile.name}さんの肩書きカードに、そっと足あとを残しました`;
 
   document.getElementById("footTags").innerText =
-    `タグ肩書き：${currentProfile.tags.join(" / ")}`;
+    `表札ことば・所属の手がかり：${currentProfile.tags.join(" / ")}`;
 
   document.getElementById("footHope").innerText =
     `距離感：${currentProfile.hope}`;

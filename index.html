@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あしあと仲人©️ v0.4H</title>
+  <title>あしあと仲人©️ v0.6-A</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,37 +11,37 @@
 <section id="screen-top" class="screen">
   <h1>あしあと仲人©️</h1>
   <p class="subtitle"><strong>人を探すな。場を探せ。</strong><br>ここは、人を条件で検索する場所ではありません。<br>気になる言葉のコミュニティをのぞき、そこで交わされる立ち話に耳をすます場所です。</p>
-  <p class="subtitle">急がないつながり方を試したい人のための、表札街SNS模型です。<br>部屋の表札をのぞき、立ち話から人となりをゆっくり読みます。</p>
+  <p class="subtitle">急がないつながり方を試したい人のための、コミュニティSNS模型です。<br>表札街で気になる部屋をのぞき、立ち話から人となりをゆっくり読みます。</p>
   <button class="btn-primary" onclick="showScreen('screen-invite')">街の入口へ</button>
 </section>
 
 <section id="screen-invite" class="screen">
   <h2>入口のご案内</h2>
   <p>ここは、言葉の温度で人となりを読む小さな街です。</p>
-  <p>顔写真や即DMで相手を探すのではなく、部屋の表札をのぞき、立ち話を読み、気になったら肩書きカードを見ます。</p>
+  <p>人を条件や顔写真だけで探すのではなく、部屋の表札をのぞき、立ち話を読み、気になったら肩書きカードを見ます。</p>
   <h3>この街の3つのこと</h3>
   <ol>
-    <li>顔写真や、いきなりのDMはありません。</li>
+    <li>いきなりのDMや人気順で人を選ぶ場所ではありません。</li>
     <li>コミュニティの立ち話から、ゆっくり人となりを見ます。</li>
     <li>治安ゲートは、荒らし・業者・なりすましを減らすための見守りです。</li>
   </ol>
-  <button class="btn-primary" onclick="showScreen('screen-my-tags')">今日の名札をえらぶ</button>
+  <button class="btn-primary" onclick="showScreen('screen-my-tags')">表札ことばを持って歩く</button>
 </section>
 
 <section id="screen-my-tags" class="screen">
-  <h2>今日の名札をえらぶ</h2>
-  <p class="subtitle">気になる言葉をいくつか選んでください。<br>これは条件検索ではなく、表札街を歩くときの小さな名札です。</p>
-  <p class="subtitle">表札ことばは、人を絞り込むタグではありません。<br>気になる場やコミュニティを探すための手がかりです。<br>このデモでは、あらかじめ置かれた表札ことばから選びます。</p>
+  <h2>今日、気になる表札ことば</h2>
+  <p class="subtitle">気になる言葉をいくつか選んでください。<br>これは人を条件で探す検索ではなく、気になる場やコミュニティを見つけるための手がかりです。</p>
+  <p class="subtitle">表札ことばは、人を絞り込むタグではありません。<br>このデモでは、あらかじめ置かれた表札ことばから選び、近いコミュニティを見に行きます。</p>
   <div id="myTagList" class="my-tag-selector"></div>
-  <p id="myTagSummary" class="tag-summary">まだ肩書きは選ばれていません。</p>
-  <button class="btn-primary" onclick="showScreen('screen-communities')">表札街へ行く</button>
+  <p id="myTagSummary" class="tag-summary">まだ表札ことばは選ばれていません。</p>
+  <button class="btn-primary" onclick="showScreen('screen-communities')">コミュニティを見に行く</button>
 </section>
 
 <section id="screen-communities" class="screen">
   <h2>表札街</h2>
   <p class="subtitle">ここには、人ではなくコミュニティが並びます。<br>気になる部屋をのぞいて、立ち話に耳をすませます。</p>
   <div id="communityList"></div>
-  <button class="btn-back" onclick="showScreen('screen-my-tags')">←今日の名札へ戻る</button>
+  <button class="btn-back" onclick="showScreen('screen-my-tags')">←表札ことばへ戻る</button>
 </section>
 
 <section id="screen-community-detail" class="screen">
@@ -59,7 +59,7 @@
 
 <section id="screen-residents" class="screen">
   <h2 id="residentListTitle">この部屋の住人</h2>
-  <p class="subtitle">自分のタグ肩書きと重なる住人ほど上に表示されます。</p>
+  <p class="subtitle">持ってきた表札ことばと近い住人の気配が、少し見えやすくなります。</p>
   <div id="residentNotice"></div>
   <div id="residentList"></div>
   <button class="btn-back" onclick="showScreen('screen-community-detail')">←部屋の玄関へ戻る</button>
