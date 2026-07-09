@@ -450,13 +450,13 @@ function openProfile(pid) {
   currentProfile = profiles.find(p => p.id === pid);
   if (!currentProfile) return;
 
-  // よく行く部屋：communities.residents から currentProfile.id を逆引き
+  // よくいる部屋：communities.residents から currentProfile.id を逆引き
   const frequentRooms = communities.filter(c => c.residents.includes(currentProfile.id));
   const frequentRoomsHTML = frequentRooms.length
     ? frequentRooms.map(c => `<span class="comm-tag">${c.name}</span>`).join("")
     : `<span class="comm-tag">まだ部屋の記録なし</span>`;
 
-  // 最近の発言：posts から profileId 一致、id大きい順、最大2件
+  // 最近の立ち話：posts から profileId 一致、id大きい順、最大2件
   const recentPosts = posts
     .filter(p => p.profileId === currentProfile.id)
     .sort((a, b) => b.id - a.id)
@@ -469,7 +469,7 @@ function openProfile(pid) {
           <p>${p.text}</p>
         </div>
       `).join("")
-    : `<p class="profile-recent-empty">最近の発言はまだありません。</p>`;
+    : `<p class="profile-recent-empty">最近の立ち話はまだありません。</p>`;
 
   document.getElementById("profileCard").innerHTML = `
     <div class="card">
@@ -478,23 +478,25 @@ function openProfile(pid) {
 
       <span class="badge gate-badge">治安ゲート：説明のみ</span>
 
-      <p class="profile-section-label">表札ことば・所属の手がかり</p>
-      <p>${renderTagBadges(currentProfile.tags)}</p>
-
       <div class="notice">
+        <strong>部屋名刺©️</strong><br>
+        年齢や職業ではなく、この人が「よくいる場所」から人となりをのぞく名刺です。<br>
         所属コミュニティは、その人の名刺になります。<br>
         どんな部屋にいて、どんな立ち話に加わっているか。<br>
         それが、プロフィールより先に見える人となりです。
       </div>
 
-      <p class="profile-section-label">距離感</p>
-      <p>${currentProfile.hope}</p>
-
-      <p class="profile-section-label">よく行く部屋</p>
+      <p class="profile-section-label">よくいる部屋</p>
       <div class="comm-tags">${frequentRoomsHTML}</div>
 
-      <p class="profile-section-label">最近の発言</p>
+      <p class="profile-section-label">最近の立ち話</p>
       <div class="profile-recent-list">${recentPostsHTML}</div>
+
+      <p class="profile-section-label">表札ことば・所属の手がかり</p>
+      <p>${renderTagBadges(currentProfile.tags)}</p>
+
+      <p class="profile-section-label">距離感</p>
+      <p>${currentProfile.hope}</p>
 
       <p class="profile-section-label">おばちゃん一言</p>
       <p class="auntie-mini">👵 ${currentProfile.auntieComment}</p>
