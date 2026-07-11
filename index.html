@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>あしあと仲人©️ v0.6-E</title>
+  <title>あしあと仲人©️ v0.6-F</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -88,7 +88,7 @@
   <h2>肩書きカード</h2>
   <div id="profileCard"></div>
   <button class="btn-secondary" onclick="showFootprint()">そっと足あとを残す</button>
-  <button class="btn-primary" onclick="showScreen('screen-knock')">合図をえらぶ</button>
+  <button class="btn-primary" onclick="showScreen('screen-knock')">置く合図をえらぶ</button>
 </section>
 
 <section id="screen-footprint" class="screen">
@@ -107,12 +107,20 @@
     <p id="footHope"></p>
   </div>
   <button class="btn-back" onclick="showScreen('screen-profile')">←肩書きカードへ戻る</button>
-  <button class="btn-primary" onclick="showScreen('screen-knock')">合図をえらぶ</button>
+  <button class="btn-primary" onclick="showScreen('screen-knock')">置く合図をえらぶ</button>
 </section>
 
 <section id="screen-knock" class="screen">
+  <div class="card soft-card">
+    <h3>ここに置く合図について</h3>
+    <p>これは、返事を求める通知でも、品定めの「いいね」でもありません。</p>
+    <p>この部屋の片隅に、少し近づきたい気持ちをそっと置くものです。</p>
+    <p class="subtitle">足あと = 見た気配<br>合図 = 少し近づきたい意思</p>
+    <p>相手もあなたも、急いで拾う必要はありません。</p>
+    <p class="subtitle">※今のデモでは、本物の送信や通知はありません。</p>
+  </div>
   <h2 id="knockName"></h2>
-  <button class="btn-primary" onclick="chooseKnock('knock')">そっと気配だけ置く</button>
+  <button class="btn-primary" onclick="chooseKnock('knock')">同じ部屋にいる気配だけ置く</button>
   <button class="btn-secondary" onclick="chooseKnock('auntie')">おばちゃんに言葉を整えてもらう</button>
   <button class="btn-back" onclick="showScreen('screen-profile')">←肩書きカードへ戻る</button>
 </section>

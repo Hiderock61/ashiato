@@ -523,7 +523,7 @@ function showFootprint() {
     `距離感：${currentProfile.hope}`;
 
   document.getElementById("knockName").innerText =
-    `${currentProfile.name}さんに、どんな合図を置きますか？`;
+    `${currentProfile.name}さんのそばに、どんな合図を置きますか？`;
 
   showScreen("screen-footprint");
 }
